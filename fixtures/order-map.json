@@ -1,0 +1,29 @@
+{
+  "key": "order_id",
+  "columns": [
+    {
+      "input": "Order ID",
+      "output": "order_id",
+      "type": "text",
+      "required": true
+    },
+    {
+      "input": "Customer",
+      "output": "customer",
+      "type": "text",
+      "required": true
+    },
+    {
+      "input": "Quantity",
+      "output": "quantity",
+      "type": "integer",
+      "required": true
+    },
+    {
+      "input": "Order date",
+      "output": "order_date",
+      "type": "date",
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "code": "NEW_ORDERS",
+  "name": "Our order snapshot",
+  "owner": "Your operator",
+  "purpose": "Fulfil accepted orders",
+  "personal_data": true,
+  "retention_days": 90,
+  "review_on": "2027-01-01",
+  "sla_hours": 24,
+  "config": {
+    "key": "order_id",
+    "columns": [
+      {
+        "input": "Order ID",
+        "output": "order_id",
+        "type": "text",
+        "required": true
+      },
+      {
+        "input": "Customer",
+        "output": "customer",
+        "type": "text",
+        "required": true
+      },
+      {
+        "input": "Quantity",
+        "output": "quantity",
+        "type": "integer",
+        "required": true
+      },
+      {
+        "input": "Order date",
+        "output": "order_date",
+        "type": "date",
+        "required": true
+      }
+    ]
+  }
+}

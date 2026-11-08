@@ -1,115 +1,101 @@
-<h1 align="center">Data Pipelines for Claude Code</h1>
+# Data Pipelines for Claude Code
 
-<p align="center">
-  <strong>The open-source data pipeline desk that is just a database and Claude Code.</strong>
-</p>
+Repeatable file-to-database transfers, validation, change history and reconciliation in a database your business owns.
 
-<p align="center">
-  Created by <a href="https://www.enterprisedna.co"><strong>Enterprise DNA</strong></a>. Free and open source. Works with Claude Code, Codex, OpenCode or Cursor.
-</p>
+| Do it yourself | We customise it | We run it for you |
+|---|---|---|
+| Free, MIT. Install and run the fictional demo. | Your source fields, transfer rules, connections and reports. | Installed and operated through Omni by Enterprise DNA. A setup fee, then a retainer. |
 
-<!-- three-doors -->
-<table align="center">
-  <tr>
-    <td align="center"><strong>Do it yourself</strong><br/>Clone it, run it, own it. Free, MIT.<br/><a href="#quick-start">Quick start</a></td>
-    <td align="center"><strong>We customise it</strong><br/>Your fields, your rules, your Integrate.io data brought across.<br/><a href="https://enterprisedna.co/omni/book/?utm_source=github&utm_medium=readme&utm_campaign=integrate-io">Book a call</a></td>
-    <td align="center"><strong>We run it for you</strong><br/>Installed, connected and operated inside Omni. Setup fee, then a retainer.<br/><a href="https://enterprisedna.co/omni/instead-of/integrate-io?utm_source=github&utm_medium=readme&utm_campaign=integrate-io">How it works</a></td>
-  </tr>
-</table>
+[Get your version built](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=integrate-io) · [Instead of Integrate.io](https://enterprisedna.co/omni/instead-of/integrate-io)
 
-<p align="center">
-  <a href="#what-is-this">What is this</a> &bull;
-  <a href="#why-no-front-end">Why no front end</a> &bull;
-  <a href="#quick-start">Quick start</a> &bull;
-  <a href="#the-commands">Commands</a> &bull;
-  <a href="#instead-of-integrate-io">Instead of Integrate.io</a> &bull;
-  <a href="#want-it-installed-and-run-for-you">Installed for you</a> &bull;
-  <a href="#license">License</a>
-</p>
+## What this replaces
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Node-20+-339933?style=flat-square" alt="Node 20+" />
-  <img src="https://img.shields.io/badge/PostgreSQL-any-336791?style=flat-square" alt="PostgreSQL" />
-  <img src="https://img.shields.io/badge/PGlite-embedded-3ecf8e?style=flat-square" alt="PGlite" />
-  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT License" />
-</p>
+The internal desk for repeatable file-to-database feeds: inspect what is late, validate the whole file, apply accepted records, compare counts and follow up failures. It works with Claude Code, Codex, OpenCode or Cursor. There is no application front end.
 
----
+Integrate.io Core lists US$1,999 per month, or US$23,988 annualised before tax. That is list pricing, not a customer invoice. The managed platform includes services beyond this free base. [Vendor pricing](https://www.integrate.io/pricing/), checked 8 November 2026.
 
-## What is this
-
-Data Pipelines for Claude Code does the job you pay Integrate.io for, as a Postgres database and a set of agent commands. There is no web front end. You open the folder in [Claude Code](https://claude.com/claude-code) (or Codex, OpenCode, Cursor: see `AGENTS.md`) and ask for what you want in plain language. It runs the right query, and it can answer questions the Integrate.io dashboard cannot.
-
-<!-- TODO(author): the annual bill. One sentence: what a 10 to 50 person business typically pays Integrate.io per year, all in, with a source. -->
-
-Want the same thing with a web front end, or built on a different stack? That is a customisation, and it is exactly what Enterprise DNA does: [book a call](https://enterprisedna.co/omni/book/?utm_source=github&utm_medium=readme&utm_campaign=integrate-io).
-
-<!-- TODO(author): two or three sentences on what this specific product covers and who it is for. -->
-
-## Why no front end
-
-- The front end was only ever there because the database was hard to talk to. That is no longer true.
-- Your data sits in plain Postgres tables you own. Any tool can read them. No export, no lock-in.
-- No seats, no tiers, no add-ons. Read [docs/why-no-front-end.md](docs/why-no-front-end.md) for the honest trade-offs too.
+The free implementation runs CSV snapshots into keyed database records. Proprietary connectors, live change capture, managed scheduling and external delivery need an installed integration. Assess the entire workflow before cancelling a managed service.
 
 ## Quick start
 
-Sixty seconds, no database install (an embedded Postgres runs inside Node):
+Node 20 or later.
 
 ```bash
 git clone https://github.com/Enterprise-DNA-OS/data-pipelines-for-claude-code.git
 cd data-pipelines-for-claude-code
 npm install
 npm run demo
+npm run pipe -- morning-check
+npm run view
+npm run docs
 ```
 
-Then open the folder in Claude Code and type a slash command. <!-- TODO(author): name the first command to try. -->
+Local PGlite stores the database under .data/db. DATA_DIR changes it. DATABASE_URL selects PostgreSQL. npm run migrate applies numbered migrations. Never seed a real database. Shared PostgreSQL seeding requires --demo-database explicitly.
 
-### Use it with your own Postgres or Supabase
+The fictional Kauri Data Operations demo has overdue order and stock feeds, a rejected quantity, a missing owner and purpose, overdue review dates and retained returns. Dates are relative to the first seed. Seeding twice preserves existing rows.
 
-Copy `.env.example` to `.env`, set `DATABASE_URL`, then `npm run migrate`. Same commands, shared data, no per-seat fee.
+## The operating week
 
-## The commands
+Start with /morning-check, /failures, /reconciliation, /schema-review and /retention-review. /weekly-review combines five queries into a meeting pack. /owner-load shows who owns overdue feeds. /actions keeps follow-ups visible. /compliance runs seven sourced record checks, with policy settings explained in docs/compliance.md.
 
-<!-- TODO(author): a table of the slash commands in .claude/commands and what each one does. -->
+Every transfer checks all rows before applying any. Malformed CSV, invalid dates, duplicate keys, empty input and unmapped columns reject the batch. Current records remain unchanged. The successful counts satisfy input = inserted + changed + unchanged. Before/after values are kept for changed records. A repeat identical input changes no business values. Older snapshots cannot overwrite newer ones, and different content cannot reuse the same accepted source timestamp. Missing keys are retained and reported by /reconcile, never silently deleted.
 
-| Command | What it does |
-|---|---|
-| `/...` | ... |
+## Ten questions answered today
 
-## Instead of Integrate.io
+These are demonstrated capabilities, not claims that the vendor cannot answer them.
 
-<!-- TODO(author): how to bring data across from Integrate.io; link docs/replace-integrate-io.md -->
+1. Which enabled feeds are late or rejected? /morning-check
+2. Who owns the most overdue feeds? /owner-load
+3. Which attempted transfers failed validation? /failures
+4. Did each accepted input record insert, change or remain unchanged? /reconciliation
+5. Which incoming fields map to each destination field? /schema-review
+6. What exactly changed in a transferred record? /changes
+7. Which records and history exceed our configured review age? /retention-review
+8. Which personal-data feeds lack purpose or retention evidence? /compliance
+9. Which follow-ups are still open and who owns them? /actions
+10. Does this incoming file match the destination, including records absent from the file? /reconcile
 
-## Architecture
+## Bring your records
 
+Integrate.io documents package JSON export, subject to Source Control and editing permission. The one-command import records a sanitised package inventory using an explicit pointer map. It does not convert connector expressions. The fixtures are synthetic examples. Follow [the switching guide](docs/replace-integrate-io.md), then register a reviewed CSV mapping.
+
+```bash
+npm run pipe -- import integrate-io --file=fixtures/package.json --map=fixtures/package-map.json --actor="Your name" --dry-run
+npm run pipe -- add --file=fixtures/pipeline-definition.json --actor="Your name"
+npm run pipe -- validate --ref=NEW_ORDERS --file=fixtures/orders.csv --as-of=2026-11-03T09:00:00Z
+npm run pipe -- sync --ref=NEW_ORDERS --file=fixtures/orders.csv --as-of=2026-11-03T09:00:00Z --actor="Your name"
+npm run pipe -- reconcile --ref=NEW_ORDERS --file=fixtures/orders.csv --as-of=2026-11-03T09:00:00Z
 ```
-data-pipelines-for-claude-code/
-  CLAUDE.md                 how the operator wants this run (routing table + house rules)
-  AGENTS.md                 the same, for Codex / OpenCode / Cursor / Gemini CLI
-  .claude/commands/         the slash commands
-  scripts/                  the CLI the commands drive
-  scripts/lib/db.mjs        one adapter: DATABASE_URL (pg) or embedded PGlite
-  supabase/migrations/      plain SQL schema
-  supabase/seed.sql         demo data
-  docs/                     the thesis and the migration guide
-```
 
-## Built for coding agents
+Use the source's true timestamp for working data. All commands accept --json. Reads match exact codes, case-insensitive names and id prefixes, and list candidates with exit code 1 when ambiguous. Mutations require the operator's name. This is a trusted administrator's tool, not an end-user permissions service.
 
-The database, CLI and command recipes work with Claude Code, Codex, OpenCode or Cursor. Ask your coding agent for a new command and have it implement and test the change against the same records.
+## Commands
 
-## Contributing
+29 CLI commands and 33 slash recipes. The command index lives in CLAUDE.md. /add, /configure and /policy change the feed definition. /log, /add-action and /close-action retain attributed evidence. /pause and /resume control transfers. /export writes a consistent JSON snapshot to a new private file. /draft-handover and /draft-incident write HTML to drafts. Nothing sends.
 
-Issues and pull requests are welcome. Keep the shape: plain SQL, a small CLI, a slash command per recurring job, no front end.
+## Paperwork and views
 
-## Want it installed and run for you?
+Edit brand.json once. npm run docs creates an internal handover and transfer reconciliation record for every pipeline. npm run view renders the week and control findings as read-only HTML. The shared renderer escapes data and uses your business name, logo and colours. The reports are internal records, not legal certificates. See [the scope of the base](docs/why-no-front-end.md).
 
-Enterprise DNA installs Data Pipelines for Claude Code for your business, migrates your Integrate.io data, connects it to the rest of your tools, and runs it for you as part of **Omni**, our managed Command Center. One setup fee, then a monthly retainer.
+## Your first hour: ten things to ask for
 
-- Book a call: [enterprisedna.co/omni/book](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=integrate-io)
-- Read more: [enterprisedna.co/omni/instead-of/integrate-io](https://enterprisedna.co/omni/instead-of/integrate-io?utm_source=github&utm_medium=readme&utm_campaign=integrate-io)
+1. Put our business name and colours on the handover.
+2. Show the feeds that missed their source deadline.
+3. Test our first file without saving it.
+4. Map our existing source identifiers.
+5. Add an optional warehouse field.
+6. Set our actual freshness interval.
+7. Record why we retain personal information.
+8. Compare incoming values with the destination.
+9. Give each unresolved error an owner and due date.
+10. Add our sign-off wording to the transfer record.
 
-## License
+/customise writes a numbered migration, tests it and applies it. /new-view adds a read-only report. External extraction, scheduling, access roles, backups and retention disposal are installation work.
 
-MIT. Copyright (c) 2026 Enterprise DNA.
+## Verification
+
+npm test uses a temporary database, seeds twice and exercises all 29 CLI commands. It checks atomic rollback, rejected inputs, repeated files, source timestamps, reconciliation, changes, imports, ambiguous references, JSON exit codes, exports and rendered documents. TEST_DATABASE_URL supports an empty disposable PostgreSQL database. The manual CI workflow covers Linux, Windows and PostgreSQL. A workflow file is not proof of a passing run.
+
+[Research and scoring](docs/research.md). MIT. Not affiliated with Integrate.io or Anthropic. Hosting and agent subscriptions have their own costs. Enterprise DNA installs your version for a setup fee, then runs it on a retainer through Omni by Enterprise DNA. [Book 30 minutes with Sam](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=integrate-io).
+
+The local transfer command accepts files up to 32 MiB. Larger feeds need a separately tested streaming integration.

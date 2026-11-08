@@ -1,0 +1,14 @@
+{
+  "name": "Wholesale orders",
+  "version": "1",
+  "description": "Synthetic package inventory example",
+  "components": {
+    "source": {
+      "type": "file"
+    },
+    "destination": {
+      "type": "database"
+    }
+  },
+  "variables": []
+}

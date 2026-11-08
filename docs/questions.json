@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Which enabled feeds are late or rejected?",
+    "command": "morning-check"
+  },
+  {
+    "question": "Who owns the most overdue feeds?",
+    "command": "owner-load"
+  },
+  {
+    "question": "Which attempted transfers failed validation?",
+    "command": "failures"
+  },
+  {
+    "question": "Did each accepted input record insert, change or remain unchanged?",
+    "command": "reconciliation"
+  },
+  {
+    "question": "Which incoming fields map to each destination field?",
+    "command": "schema-review"
+  },
+  {
+    "question": "What exactly changed in a transferred record?",
+    "command": "changes"
+  },
+  {
+    "question": "Which records and history exceed our configured review age?",
+    "command": "retention-review"
+  },
+  {
+    "question": "Which personal-data feeds lack purpose or retention evidence?",
+    "command": "compliance"
+  },
+  {
+    "question": "Which follow-ups are still open and who owns them?",
+    "command": "actions"
+  },
+  {
+    "question": "Does this incoming file match the destination, including records absent from the file?",
+    "command": "reconcile"
+  }
+]

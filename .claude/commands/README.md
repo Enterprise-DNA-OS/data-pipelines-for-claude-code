@@ -1,5 +1,3 @@
-# Slash commands
+# Command recipes
 
-One file per recurring job. Each command tells Claude Code exactly which CLI command to run and how to present the result, so the operator never re-explains the job.
-
-Add a command every time the same ask comes twice. Frontmatter needs a `description:` line. The body is the brief.
+The 29 operating commands match scripts/pipelines.mjs. Also use /view, /docs, /customise and /new-view. These are recipes for the coding agent, not a separate runtime.

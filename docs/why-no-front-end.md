@@ -1,24 +1,13 @@
-# Why there is no front end
+# Why this transfer desk has no application front end
 
-Integrate.io is a database with a subscription. The tables underneath it are ordinary: a few entities, a few relationships, a handful of workflows you repeat every week. What you pay for is the layer on top that lets people who do not write SQL get at those tables. Screens, filters, dashboards, forms.
+A feed operator needs to know what arrived, which records were accepted and what failed. The CLI performs the transfer and stores the evidence. A coding agent runs it from a plain-language request. Read-only HTML reports show the week and the control findings. No server is required for the local demo.
 
-That layer used to be the whole product, because talking to a database was hard. It is not hard any more. Open this folder in Claude Code, describe what you want, and it writes the query, runs it, and explains the answer. Ask a question the dashboard never had a chart for and you still get an answer.
+Integrate.io also supplies managed connectors, orchestration, transformation tools and support. Those are real services. This base covers repeatable CSV-to-database workflows, so an organisation should compare the complete installed scope before replacing a managed platform.
 
-## What you gain
+A visual designer provides drag-and-drop transformations, live execution monitoring and connection management. A browser application can provide mobile access and roles. This base has none of those screens. Enterprise DNA can build the interfaces and connections agreed for the installed version. Offline local operation is available through PGlite, but shared database access needs a connection.
 
-- **Better answers.** A dashboard shows what the vendor decided to chart. Here you ask your own question, in your own words, and get it answered against your own data.
-- **No seats.** Everyone who needs to look can look. The bill does not grow with headcount.
-- **Your data in your Postgres.** Plain tables. Back them up, query them from anything, leave any time. There is no export step because there is nothing to leave.
-- **A process that matches you.** When your way of working changes, you add a command. You do not wait for a feature request to clear.
+A database and an agent are enough for a modest operator-run file transfer. They do not turn a local process into a high-availability streaming service. Large files need a streaming adapter and production load testing. Use the database export, private backups and a rehearsed restore procedure.
 
-## What you give up
+Omni by Enterprise DNA: https://enterprisedna.co/omni/instead-of/integrate-io
 
-- **A visual board.** Stages are a table you ask about, not cards you drag.
-- **A phone app.** It runs where Claude Code runs.
-- **A vendor help desk.** This is open source. Enterprise DNA supports the installed version for businesses that want someone to call.
-
-## Who this fits
-
-Small teams who already use Claude Code, or who would rather learn to ask than learn another interface. If your team needs a screen to look at all day, keep Integrate.io. If you need the answers more than the screens, this is cheaper, faster and yours.
-
-Installed and run for you: https://enterprisedna.co/omni/instead-of/integrate-io
+The local transfer command accepts files up to 32 MiB. Larger feeds need a separately tested streaming integration.

@@ -1,13 +1,30 @@
 [
   {
     "name": "week",
-    "title": "This week",
-    "subtitle": "Data Pipelines for Claude Code: what needs attention, rendered by npm run view",
+    "title": "The data transfer week",
+    "subtitle": "Synthetic demo when seeded. Internal review only.",
     "sections": [
       {
-        "title": "Needs attention",
-        "note": "TODO(author): point this at the industry's attention view (overdue, stuck, quiet).",
-        "sql": "select 'replace me' as item, 'TODO(author)' as why"
+        "title": "Freshness and ownership",
+        "sql": "select code,name,owner,record_count,freshness,latest_status from pipeline_health order by code"
+      },
+      {
+        "title": "Open follow-ups",
+        "sql": "select p.code,a.name,a.owner,a.due_on from actions a join pipelines p on p.id=a.pipeline_id where a.status='open' order by a.due_on"
+      }
+    ]
+  },
+  {
+    "name": "controls",
+    "title": "Transfer controls",
+    "sections": [
+      {
+        "title": "Record checks",
+        "sql": "select * from compliance_findings order by code,rule"
+      },
+      {
+        "title": "Transfer totals",
+        "sql": "select code,status,input_rows,inserted,changed,unchanged,issues from run_reconciliation order by created_at desc"
       }
     ]
   }

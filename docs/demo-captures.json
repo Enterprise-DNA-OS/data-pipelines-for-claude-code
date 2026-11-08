@@ -1,0 +1,23 @@
+{
+  "captured_at": "2026-11-08T22:38:59.598Z",
+  "screens": [
+    {
+      "title": "The morning transfer check",
+      "ask": "Which feeds need attention this morning?",
+      "command": "npm run pipe -- morning-check",
+      "output": "code     owner      freshness  latest_status  last_source_at          \n  -------  ---------  ---------  -------------  ------------------------\n  ORDERS   Mara Bell  overdue    rejected       2026-11-05T22:34:30.452Z\n  RETURNS             overdue    succeeded      2026-10-25T22:34:30.452Z\n  STOCK    Theo Reed  overdue    succeeded      2026-11-07T22:34:30.452Z"
+    },
+    {
+      "title": "Accountable owners",
+      "ask": "Who owns our overdue feeds?",
+      "command": "npm run pipe -- owner-load",
+      "output": "owner       pipelines  overdue\n  ----------  ---------  -------\n  Mara Bell   1          1      \n  Theo Reed   1          1      \n  Unassigned  1          1      \n  Ana Gray    1          0"
+    },
+    {
+      "title": "Transfer reconciliation",
+      "ask": "Did the accepted records add up?",
+      "command": "npm run pipe -- reconciliation",
+      "output": "code     status     input_rows  inserted  changed  unchanged  issues\n  -------  ---------  ----------  --------  -------  ---------  ------\n  STOCK    succeeded  1           1         0        0          0     \n  ORDERS   rejected   3           0         0        0          1     \n  ORDERS   succeeded  1           1         0        0          0     \n  RETURNS  succeeded  1           1         0        0          0     \n  ARCHIVE  succeeded  1           1         0        0          0"
+    }
+  ]
+}

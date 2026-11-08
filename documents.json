@@ -1,11 +1,41 @@
 [
   {
-    "name": "example",
-    "title": "TODO(author): the first document this industry must produce",
-    "for_each": "select gen_random_uuid() as id, 'Example' as name",
-    "file": "name",
+    "name": "handover",
+    "title": "Pipeline handover record",
+    "for_each": "select id,code from pipelines order by code",
+    "file": "code",
     "sections": [
-      { "title": "Details", "sql": "select 'replace me' as item, $1::text as record_id" }
+      {
+        "title": "Accountability",
+        "layout": "record",
+        "sql": "select code,name,owner,purpose,personal_data,retention_days,review_on,sla_hours from pipelines where id=$1"
+      },
+      {
+        "title": "Mapping",
+        "sql": "select value->>'input' as source_field,value->>'output' as destination_field,value->>'type' as value_type from pipelines p,jsonb_array_elements(p.config->'columns') where p.id=$1"
+      },
+      {
+        "title": "Recent runs",
+        "sql": "select status,as_of,input_rows,inserted,changed,unchanged,actor from runs where pipeline_id=$1 order by created_at desc",
+        "note": "Reconcile these figures against the source before accepting a handover."
+      }
+    ]
+  },
+  {
+    "name": "transfer-certificate",
+    "title": "Transfer reconciliation record",
+    "for_each": "select id,code from pipelines order by code",
+    "file": "code",
+    "sections": [
+      {
+        "title": "Run evidence",
+        "sql": "select id,status,as_of,source_hash,revision,input_rows,inserted,changed,unchanged,actor from runs where pipeline_id=$1 order by created_at desc",
+        "note": "Internal record, not a certificate of legal compliance."
+      },
+      {
+        "title": "Outstanding work",
+        "sql": "select name,owner,due_on from actions where pipeline_id=$1 and status='open' order by due_on"
+      }
     ]
   }
 ]

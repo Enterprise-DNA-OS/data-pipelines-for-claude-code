@@ -1,0 +1,13 @@
+# Candidate research and scope
+
+Selected 8 November 2026. Family: data-transfer-operations. Every category in data/rebuilds/targets was checked before registration. This family was absent. Scholastica's journal-peer-review family was excluded for this run. Existing data-preparation and data-quality builds cover different work: this build applies repeatable incoming snapshots and reconciles them.
+
+Integrate.io Core lists US$1,999 monthly, annualised to US$23,988 before tax. This is a published plan calculation, not a verified NZ or Australian customer invoice. [Vendor pricing](https://www.integrate.io/pricing/). The page lists a flat plan, unlimited volume, pipelines and connectors, platform access, 60-second frequency and onboarding. Do not describe it as a per-seat subscription or invent a usage surcharge.
+
+Scores in the required order: annual bill 3, data-shaped 4, our buyers 2, search demand 3, one-session buildable 4, import path 3. Total 19/30. Local customer brains and CRM snapshots contained no verified Integrate.io subscription. No live customer subscription was established. Buyer fit is a hypothesis for small data and operations teams. Pricing and alternative searches return multiple comparison pages, but no search-volume dataset was available. Neither score claims measured demand.
+
+The documented package export is useful migration input, with an account-level Source Control prerequisite. Proprietary connectors are not automatically executable here. [Vendor export instructions](https://www.integrate.io/docs/etl/how-do-i-import-or-export-a-packages-json-source-code). [Packages overview](https://www.integrate.io/docs/etl/integrateio-etls-packages). This is why import scored 3 rather than 5.
+
+Other candidates: dbt Cloud scored 1/3/2/4/2/5, total 17. Its current Starter is capped at five developer seats at US$100 per seat monthly, so multiplying by 25 seats would invent an unsupported bill. Enterprise is quoted. [dbt pricing](https://www.getdbt.com/pricing). Synap scored 2/3/2/3/1/4, total 15. The Business plan is GBP8,000 per year, but exam delivery needs a candidate interface. [Synap pricing](https://synap.ac/pricing/). Both were rejected. Other quote-only candidates were not treated as proven expensive invoices.
+
+No competitor inability is claimed for the ten demo questions. These are verified capabilities of this implementation. Integrate.io's own APIs and exports can support custom analysis too. Compare the owner's actual workflow and bill before recommending a switch.
