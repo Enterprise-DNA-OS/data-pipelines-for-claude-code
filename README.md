@@ -12,7 +12,7 @@ Repeatable file-to-database transfers, validation, change history and reconcilia
 
 The internal desk for repeatable file-to-database feeds: inspect what is late, validate the whole file, apply accepted records, compare counts and follow up failures. It works with Claude Code, Codex, OpenCode or Cursor. There is no application front end.
 
-Integrate.io Core lists US$1,999 per month, or US$23,988 annualised before tax. That is list pricing, not a customer invoice. The managed platform includes services beyond this free base. [Vendor pricing](https://www.integrate.io/pricing/), checked 8 November 2026.
+Integrate.io Core lists US$1,999 per month billed annually, or US$23,988 before tax. That is list pricing, not a customer invoice. The managed platform includes services beyond this free base. [Vendor pricing](https://www.integrate.io/pricing/), checked 8 November 2026.
 
 The free implementation runs CSV snapshots into keyed database records. Proprietary connectors, live change capture, managed scheduling and external delivery need an installed integration. Assess the entire workflow before cancelling a managed service.
 
