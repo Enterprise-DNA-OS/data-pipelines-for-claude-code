@@ -6,7 +6,7 @@ Repeatable file-to-database transfers, validation, change history and reconcilia
 |---|---|---|
 | Free, MIT. Install and run the fictional demo. | Your source fields, transfer rules, connections and reports. | Installed and operated through Omni by Enterprise DNA. A setup fee, then a retainer. |
 
-[Get your version built](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=integrate-io) · [Instead of Integrate.io](https://enterprisedna.co/omni/instead-of/integrate-io)
+[Get your version built](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=integrate-io) · [Instead of Integrate.io](https://enterprisedna.co/omni/instead-of/integrate-io?utm_source=github&utm_medium=readme&utm_campaign=integrate-io)
 
 ## What this replaces
 
